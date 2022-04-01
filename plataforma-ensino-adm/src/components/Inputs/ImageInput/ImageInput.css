@@ -1,0 +1,12 @@
+.input-image-box {
+    width: 7em;
+    height: 7em;
+    background-color: whitesmoke !important;
+    /* transition: .5s ease-in-out; */
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+/* .input-image-box:hover {
+    filter: brightness(0.5);
+} */

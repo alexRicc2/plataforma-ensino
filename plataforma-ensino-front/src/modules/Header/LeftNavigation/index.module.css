@@ -1,0 +1,7 @@
+.linkButton {
+    padding: 10px !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    font-size: 1.3em !important;
+}

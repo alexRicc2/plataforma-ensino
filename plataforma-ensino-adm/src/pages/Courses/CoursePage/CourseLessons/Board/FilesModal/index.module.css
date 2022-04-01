@@ -1,0 +1,27 @@
+.videoContainer, .documentContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start !important;
+    width: 100%;
+    height: 5em;
+}
+
+.iframe, .filePreview, .video {
+    width: 7em;
+    margin-right: 1em;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.filePreview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modal {
+    min-width: 30em;
+    max-height: 13em;
+    overflow-y: scroll;
+}

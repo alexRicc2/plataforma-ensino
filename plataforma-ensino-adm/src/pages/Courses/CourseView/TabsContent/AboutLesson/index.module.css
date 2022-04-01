@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.block > :first-child {
+    flex-grow: 1;
+}
+
+.block > :last-child {
+    flex-grow: 2;
+}
+

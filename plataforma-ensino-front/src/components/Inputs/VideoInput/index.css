@@ -1,0 +1,61 @@
+.video-input-box {
+    width: 7em;
+    background-color: #e0e0e0;
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 7px;
+    margin: 7px;
+    animation-name: zoom;
+    animation-duration: .1s;
+    animation-timing-function: ease-in-out;
+}
+
+.video-new {
+    animation: glow 3s infinite ease-in-out;
+}
+
+.video-thumb {
+    width: 100%;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.video-name {
+    padding: 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 10pt;
+}
+
+#remove-button {
+    background: rgba(0, 0, 0, 0.26);
+    width: 1.2em;
+    height: 1.2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    z-index: 99;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    } to {
+        transform: scale(1);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 5px 0.01cm #55efc4;
+    } 50% {
+        box-shadow: 0px 0px 5px 0.04cm #55efc4;
+    } 70% {
+        box-shadow: 0px 0px 5px 0.01cm #55efc4;
+    } 100% {
+        box-shadow: 0px 0px 5px 0.01cm #55efc4;
+    }
+}

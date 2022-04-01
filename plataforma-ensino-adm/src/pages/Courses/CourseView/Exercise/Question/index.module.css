@@ -1,0 +1,16 @@
+.card {
+    padding: 10px;
+    margin: 5px;
+}
+
+.utterance {
+    font-weight: bolder;
+}
+
+.utterance[data-correct="true"] {
+    color: #1e8e3e;
+}
+
+.utterance[data-correct="false"] {
+    color: #d93025;
+}

@@ -1,0 +1,36 @@
+.login-body {
+    margin: 2em auto;
+    margin-bottom: 5em;
+    max-width: 450px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 5px;
+}
+
+.login-content {
+    padding: 60px;
+}
+.login-main-form {
+    display: flex;
+    flex-direction: column;
+}
+.login-main-form > * {
+    margin: 5px !important;
+    
+}
+
+@media only screen and (max-width: 500px) {
+
+    .login-body {
+        margin: none;
+        max-width: max-content;
+        border-radius: 0px;
+    }
+
+    .login-content {
+        padding: 10px;
+    }
+
+    .login-wrapper {
+        background: black;
+    }
+}

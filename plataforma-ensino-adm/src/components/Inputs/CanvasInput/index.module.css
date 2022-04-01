@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: relative;
+}
+
+.canvas {
+    cursor: pointer;
+    background: whitesmoke;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}

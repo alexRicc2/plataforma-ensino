@@ -1,0 +1,21 @@
+.icon {
+    transition: 0.3s !important;
+}
+
+.expandedIcon {
+    transform: rotate(180deg);
+}
+
+.expandTab {
+    padding: 10px !important;
+    background-color: white !important;
+    transition: .3s;
+}
+
+.expandTab:hover {
+    filter: brightness(90%);
+}
+
+.title {
+    font-size: 1.3em;
+}

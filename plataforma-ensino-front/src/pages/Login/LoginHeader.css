@@ -1,0 +1,9 @@
+.login-header {
+    padding: 5px;
+}
+
+.login-header-img {
+    height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+}

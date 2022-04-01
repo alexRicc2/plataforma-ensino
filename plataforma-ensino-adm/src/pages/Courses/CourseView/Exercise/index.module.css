@@ -1,0 +1,21 @@
+.smoothFade {
+    opacity: 0;
+    transition: 3.5s;
+}
+
+.smoothShow {
+    opacity: 1;
+    transition: .1s;
+}
+
+.syncContainer {
+    will-change: opacity, transition;
+}
+
+.score {
+    padding: 5px 15px;
+    font-weight: bolder;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

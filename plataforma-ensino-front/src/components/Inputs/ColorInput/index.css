@@ -1,0 +1,10 @@
+.material-picker {
+    height: 120px !important;
+    width: 190px !important;
+}
+
+#colorpicker-hinttext {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}

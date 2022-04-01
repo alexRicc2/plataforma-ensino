@@ -1,0 +1,9 @@
+.register-header {
+    padding: 5px;
+}
+
+.register-header-img {
+    height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+}
