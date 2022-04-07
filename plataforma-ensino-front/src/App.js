@@ -4,6 +4,10 @@ import RoutesContainer from './routes';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box, createTheme, CssBaseline, LinearProgress, Typography, Zoom } from '@material-ui/core';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
+
 function App() {
 
   const [loading, SetLoading] = useState(true);
@@ -59,7 +63,9 @@ if (loading) return (
 );
 
   return (
-   <RoutesContainer/>
+      <QueryClientProvider client={queryClient}>
+          <RoutesContainer/>
+      </QueryClientProvider>
   );
 }
 

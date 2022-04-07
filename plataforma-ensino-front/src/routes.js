@@ -9,6 +9,8 @@ import Register from "./pages/Register";
 import LandingPage from "./pages/LandingPage";
 import { useSelector, useDispatch } from 'react-redux'
 import Profile from "./pages/Profile";
+import ListagemCursos from "./pages/ListagemCursos";
+import HomeCourse from "./pages/HomeCourse";
 
 const RoutesContainer = () => {
 
@@ -23,6 +25,8 @@ const RoutesContainer = () => {
                         <Navigate to={{ pathname: '/landing' }} />
                     )
                 }>
+                    <Route path={`/home/curso/:course_id`} element={<HomeCourse/>}/>
+                    <Route path={`/`} element={<ListagemCursos/>}/>
                     <Route path={`profile/view/:user_id`} element={<Profile/>}/>
                 </Route>
 

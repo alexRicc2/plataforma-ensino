@@ -112,81 +112,14 @@ const Home = (props) => {
             // Anything in here is fired on component unmount.
         }
     }, [])
-    const [courses, SetCourses] = useState([]);
-    const [loading, SetLoading] = useState(false);
-
-    const [page, SetPage] = useState(1);
-    const [maxPage, SetMaxPage] = useState(1);
-
-
-    const GetData = async () => {
-        SetLoading(true);
-        let response = await Get(`courses-main?search=${search}&page=${page}`);
-        SetLoading(false);
-
-        if (response?.status === true) {
-            SetCourses(response?.courses);
-            SetMaxPage(response?.pagination.last_page);
-        } else if (!response) dispatch(Show({
-            show: true,
-            message: "Falha ao carregar os cursos",
-            severity: "warning"
-        }));
-        console.log(response.courses);
-    }
-
-    useEffect(() => {
-        GetData();
-    }, [search, page]);
-
-
-    const HandlePath = (adminComponent, userPath, allowAdminAsUser = false) => {
-        if (user.role == "Admin") {
-            if (adminAsUser && allowAdminAsUser) return userPath;
-            return adminComponent;
-        }
-        else return userPath;
-    }
-
-    const marginLeft = (toggled == false || window.innerWidth <= 768) ? 0 : (collapsed == false ? 270 : 80);
-
+   
     return (
         <Box
             display={"flex"}
             flexDirection="column"
         >
             <Header/>
-            <main style={{ minHeight: '80vh', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: "20px", backgroundColor: "lightblue"}}>
-                <h2>Usuário logado no front</h2>
-                <br/>
-                <h3>Cursos listados aki</h3>  
-                <div style={{ display: "flex", flexWrap: "wrap" }}>
-                {courses.map((curso, index) => (
-                    <Card
-                    key={index}
-                    sx={{ width: "30%", margin: "1.5%" }}>
-                    <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={STORAGE_URL + curso.image}
-                        alt="green iguana"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {curso.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {curso.description}
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                ))}        
-                </div>
-                <Outlet/>
-                      
-            </main>
+            <Outlet/>
               
            
         </Box>

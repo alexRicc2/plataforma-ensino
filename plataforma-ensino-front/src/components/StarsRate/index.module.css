@@ -1,0 +1,21 @@
+.star {
+    color: #bdbdbd;
+    transition: color .4s, transform .1s;
+}
+
+.star:hover {
+    color: #6b6b6b;
+}
+
+.star:active, .rateStar:active {
+    transform: scale(1.1);
+}
+
+.rateStar {
+    color: #ffef00;
+    transition: color .4s, transform .1s;
+}
+
+.rateStar:hover {
+    color: #ecdd00;
+}

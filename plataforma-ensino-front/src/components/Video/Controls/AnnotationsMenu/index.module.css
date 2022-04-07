@@ -1,0 +1,4 @@
+.content {
+    width: max(60vw, 15em);
+    max-width: none !important;
+}

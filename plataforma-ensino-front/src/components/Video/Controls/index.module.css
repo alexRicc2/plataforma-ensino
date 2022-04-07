@@ -1,0 +1,46 @@
+
+.slider {
+    width: 95%;
+    padding: 5px;
+}
+
+.volume {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.volumeBtn {
+    color: #fff !important;
+    flex-grow: 1;
+}
+
+.volume:hover > .volumeSliderContainer {
+    width: 50px;
+    transition-delay: 0s;
+    overflow: visible;
+    padding: 0 6px;
+}
+
+.volumeSliderContainer {
+    width: 0;
+    overflow: hidden;
+    position: relative;
+    transition: .2s;
+    transition-delay: 1s;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.volumeSlider {
+    width: 50px;
+    color: white !important;
+}
+
+.timing {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

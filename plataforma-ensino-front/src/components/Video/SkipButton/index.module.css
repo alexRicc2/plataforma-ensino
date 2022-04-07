@@ -1,0 +1,29 @@
+.button {
+    position: absolute !important;
+    right: 1em;
+    background: white;
+    overflow: hidden;
+}
+
+.afterButton {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 0;
+    height: 100%;
+    left: 0;
+}
+
+.animate {
+    animation: increaseWidth 5s forwards linear;
+    animation-fill-mode: forwards;
+    animation-duration: 5s;
+}
+
+@keyframes increaseWidth {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
