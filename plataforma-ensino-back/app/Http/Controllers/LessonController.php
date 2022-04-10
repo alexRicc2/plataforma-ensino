@@ -98,12 +98,13 @@ class LessonController extends Controller {
         ])->save();
 
         if ($videos = $request->file("videos")) {
-            $ffprobe = FFProbe::create([
-                'ffmpeg.binaries'  => exec('C:/PATH_programs/ffmpeg.exe'),
-                'ffprobe.binaries' => exec('C:/PATH_programs/ffprobe.exe')
-            ]);
+            // $ffprobe = FFProbe::create([
+            //     'ffmpeg.binaries'  => exec('C:/PATH_programs/ffmpeg.exe'),
+            //     'ffprobe.binaries' => exec('C:/PATH_programs/ffprobe.exe')
+            // ]);
             foreach ($videos as $video) {
-                $duration = $ffprobe->format($video)->get("duration");
+                // $duration = $ffprobe->format($video)->get("duration");
+                $duration = "2";
                 $size = $video->getSize();
 
                 $originalFileName = pathinfo($video->getClientOriginalName(), PATHINFO_FILENAME);
@@ -253,9 +254,10 @@ class LessonController extends Controller {
 
         try {//Tenta criar os videos e arquivos
             if ($videos = $request->file("videos")) {
-                $ffprobe = FFProbe::create();
+                // $ffprobe = FFProbe::create();
                 foreach ($videos as $video) {
-                    $duration = $ffprobe->format($video)->get("duration");
+                    // $duration = $ffprobe->format($video)->get("duration");
+                    $duration = "2";
                     $size = $video->getSize();
 
                     $originalFileName = pathinfo($video->getClientOriginalName(), PATHINFO_FILENAME);

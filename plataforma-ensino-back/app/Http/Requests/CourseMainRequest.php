@@ -4,25 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CourseMainRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
+class CourseMainRequest extends FormRequest {
+    public function authorize() {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules() {
-        
         switch(strtolower($this->route()->getActionMethod())) {
             case "create":
                 return [
@@ -32,7 +19,13 @@ class CourseMainRequest extends FormRequest
                     "created_by" => "required",//user_id
                     "category_id" => "sometimes",
                     "responsible_id" => "sometimes",
-                    "tag_id" => "sometimes"
+                    "tag_id" => "sometimes",
+                    "price" => "sometimes",
+                    "free" => "sometimes",
+                    "course_content" => "sometimes",
+                    "what_will_learn" => "sometimes",
+                    "cover_image" => "nullable",
+                    "video_trailer" => "nullable"
                 ];
                 break;
             case "update":
@@ -43,7 +36,13 @@ class CourseMainRequest extends FormRequest
                     "image" => "required",
                     "category_id" => "sometimes",
                     "responsible_id" => "sometimes",
-                    "tag_id" => "sometimes"
+                    "tag_id" => "sometimes",
+                    "price" => "sometimes",
+                    "free" => "sometimes",
+                    "course_content" => "sometimes",
+                    "what_will_learn" => "sometimes",
+                    "cover_image" => "nullable",
+                    "video_trailer" => "nullable"
                 ];
                 break;
             case "delete":
@@ -51,10 +50,14 @@ class CourseMainRequest extends FormRequest
                     "id" => "required"
                 ];
                 break;
+            case "uploadimage":
+                return [
+                    "image" => "required"
+                ];
+                break;
             default:
                 return [];
                 break;
         }
-
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CourseMainRequest;
+use App\Http\Resources\CourseMainNotInResource;
 use App\Http\Resources\CourseMainResource;
 use App\Models\CourseMain;
 use App\Models\CoursesCategory;
@@ -10,7 +11,9 @@ use App\Models\CoursesCategoryRelation;
 use App\Models\CoursesResponsibles;
 use App\Models\CourseTags;
 use App\Models\Lesson;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class CourseMainController extends Controller {
@@ -22,19 +25,37 @@ class CourseMainController extends Controller {
     public function Get(Request $request) {
         if (isset($request->id)) {
             $course = CourseMain::find($request->id);
-            if ($course->exists()) return response()->json([
-                "status" => true,
-                "severity" => "success",
-                "course" => CourseMainResource::make($course)
-            ]);
-            else return response()->json([
+            if (!$course->exists()) return response()->json([
                 "status" => false,
                 "severity" => "error",
                 "message" => "O curso não foi achado"
             ]);
+
+            //creates a relation with the course and user if it's free
+            if ($course->free) UserCourse::firstOrNew(
+                ["user_id" => Auth::id(), "course_id" => $course->id], 
+                ["user_id" => Auth::id(), "course_id" => $course->id]
+            )->save();
+
+            //controle de aluno com acesso
+
+            // if (UserCourse::where("user_id", Auth::id())->where("course_id", $course->id)->first() == null) return response()->json([
+            //     "status" => true,
+            //     "access" => false,
+            //     "severity" => "warning",
+            //     "error" => "NOT_IN",
+            //     "message" => "Você não possuí acesso a este curso",
+            //     "course" => CourseMainNotInResource::make($course)
+            // ]);
+
+            return response()->json([
+                "status" => true,
+                "severity" => "success",
+                "course" => CourseMainResource::make($course)
+            ]);
         }
 
-        $courses = CourseMain::where("name", "ilike", $request->search . "%")->paginate($this->paginate);
+        $courses = CourseMain::where("name", "ilike", "%" . $request->search . "%")->orderBy("created_at")->paginate($this->paginate);
 
         return response()->json([
             "status" => true,
@@ -59,7 +80,7 @@ class CourseMainController extends Controller {
         return response()->json([
             "status" => true,
             "severity" => "success",
-            "lessons" => Lesson::where("course_id", "=", $course_id)->where("title", "ilike", $request->search . "%")->get()
+            "lessons" => Lesson::where("course_id", "=", $course_id)->where("title", "ilike", "%" . $request->search . "%")->get()
         ]);
     }
 
@@ -79,15 +100,51 @@ class CourseMainController extends Controller {
         ]);
     }
 
+    public function GetFree(Request $request) {
+        if (isset($request->id)) {
+            $course = CourseMain::where("id", $request->id)->where("free", true)->first();
+            if ($course === null) return response()->json([
+                "status" => false,
+                "severity" => "error",
+                "message" => "Curso não disponível ou inexistente"
+            ]);
+
+            return response()->json([
+                "status" => true,
+                "severity" => "success",
+                "course" => CourseMainResource::make($course)
+            ]);
+        }
+        $courses = CourseMain::where("price", 0)->get();
+        return response()->json([
+            "status" => true,
+            "severity" => "success",
+            "courses" => CourseMainResource::collection($courses)
+        ]);
+    }
+
     //POST
 
     public function Create(CourseMainRequest $request) {
-        $data = $request->validated();
         Log::info($request);
+        $data = $request->validated();
+        
         if ($image = $request->file("image")) {
             $filename = uniqid("course_thumb_") . "." . $image->extension();
             $path = $image->storeAs("courses_thumbnails", $filename, ["disk" => "public"]);
             $data["image"] = $path;
+        }
+
+        if ($image = $request->file("cover_image")) {
+            $filename = uniqid("course_cover_") . "." . $image->extension();
+            $path = $image->storeAs("courses_covers", $filename, ["disk" => "public"]);
+            $data["cover_image"] = $path;
+        }
+
+        if ($image = $request->file("video_trailer")) {
+            $filename = uniqid("course_trailer") . "." . $image->extension();
+            $path = $image->storeAs("courses_videos_trailers", $filename, ["disk" => "public"]);
+            $data["video_trailer"] = $path;
         }
 
         $course = new CourseMain();
@@ -136,6 +193,18 @@ class CourseMainController extends Controller {
             $filename = uniqid("course_thumb_") . "." . $image->extension();
             $path = $image->storeAs("courses_thumbnails", $filename, ["disk" => "public"]);
             $data["image"] = $path;
+        }
+
+        if ($image = $request->file("cover_image")) {
+            $filename = uniqid("course_cover_") . "." . $image->extension();
+            $path = $image->storeAs("courses_covers", $filename, ["disk" => "public"]);
+            $data["cover_image"] = $path;
+        }
+
+        if ($image = $request->file("video_trailer")) {
+            $filename = uniqid("course_trailer") . "." . $image->extension();
+            $path = $image->storeAs("courses_videos_trailers", $filename, ["disk" => "public"]);
+            $data["video_trailer"] = $path;
         }
 
         $course = CourseMain::find($data["id"]);
@@ -201,4 +270,19 @@ class CourseMainController extends Controller {
         ]);
     }
 
+    //UTILS
+
+    public function UploadImage(CourseMainRequest $request) {
+        $data = $request->validated();
+        
+        if ($image = $request->file("image")) {
+            $filename = uniqid("course_main_content_images") . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs("course_main_content_images", $filename, ["disk" => "public"]);
+            $data["image"] = $path;
+        }
+
+        return response()->json([
+            "image" => $data["image"]
+        ]);
+    }
 }
