@@ -87,6 +87,7 @@ const Controls = forwardRef((props, ref) => {
     useEffect(() => {
         if (!player?.current) return;
         let videoTimePercent = player?.current?.currentTime * 100 / endTime;
+        console.log('currentTime', player.current.currentTime)
         SetSlider(videoTimePercent);
     }, [player?.current?.currentTime]);
 
@@ -117,12 +118,18 @@ const Controls = forwardRef((props, ref) => {
         <div
             {...other}
             className={control.controls}
+            
         >
-            <div className="flex jcc" id="top">
+            <div className="flex jcc" id="top"
+                style={{ display: 'flex', justifyContent: 'center' }}
+            >
                 <Slider
                     className={styles.slider}
                     onChange={(_, value) => {
+                        console.log('ativado');
                         const newTime = endTime * value / 100;
+                        console.log(' new time ', newTime)
+                        // player.current.currentTime = 8
                         player?.current && (player.current.currentTime = isNaN(newTime) ? 0 : newTime);
                         SetSlider(value);
                     }}
@@ -135,8 +142,12 @@ const Controls = forwardRef((props, ref) => {
                     value={slider}
                 />
             </div>
-            <div className="flex fdrow align-center jcsb">
-                <div className="flex fdrow">
+            <div className="flex fdrow align-center jcsb"
+                style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+            >
+                <div className="flex fdrow"
+                    style={{ display: 'flex', flexDirection: 'row' }}
+                >
                     <IconButton 
                         hidden={!prev || navigator.userAgentData.mobile}
                         onClick={onPrev}

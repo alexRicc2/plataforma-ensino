@@ -22,6 +22,7 @@ const HomeCourse = () => {
     const { isLoading, error, data } = useQuery(["course", course_id], () => Get(`courses-main?id=${course_id}`));
 
     useEffect(() => {
+        
         if (data?.status === true) {
             if (data?.error == "NOT_IN") navigate(`/adquire/courses/${course_id}`);
             SetCourse(data?.course);
@@ -75,6 +76,9 @@ const HomeCourse = () => {
                         }
                     }}
                     src={course?.video_trailer ? STORAGE_URL + course?.video_trailer : null}
+                   
+                    title={'Trailer'}
+                    boldTitle={course?.name}
                 />
                 <Box
                     flex={0.6}
