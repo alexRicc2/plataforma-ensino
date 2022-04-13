@@ -3,6 +3,8 @@ import TabPanel from "../TabPanel";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import SwipeableViews from "react-swipeable-views";
+import { StyledEngineProvider } from '@mui/material/styles';
+import "./tabs.css";
 
 import styles from "./index.module.css";
 
@@ -25,6 +27,7 @@ const TabsContainer = props => {
     useEffect(() => SetTab(parseInt(urlSearchParams.get(tabName) || 0)), []);
 
     return (
+        <StyledEngineProvider injectFirst>
         <div className="tabsContainer" {...other}>
             <Tabs
                 value={tab}
@@ -32,6 +35,7 @@ const TabsContainer = props => {
                     SetTab(value);
                     navigate({ search: `?${tabName}=${value}` });
                 }}
+                textColor="secondary"
                 variant={variant}
             >
                 {React.Children?.map(children, (_, key) => (
@@ -39,6 +43,8 @@ const TabsContainer = props => {
                         className={styles.tab}
                         {...labels[key]}
                         key={key}
+                        sx={{ color: "#f7f7f7" }}
+
                     />
                 ))}
             </Tabs>
@@ -58,6 +64,7 @@ const TabsContainer = props => {
                 </SwipeableViews>
             </div>
         </div>
+        </StyledEngineProvider>
     );
 }
 

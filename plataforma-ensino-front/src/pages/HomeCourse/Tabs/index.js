@@ -35,7 +35,10 @@ const Tabs = props => {
                 />
             ) : (
                 <div>
-                    <div dangerouslySetInnerHTML={{__html: course?.course_content}}/>
+                    <div
+                     style={{ color: "#f7f7f7" }}
+                     dangerouslySetInnerHTML={{__html: course?.course_content}}/>
+
                     <CourseContent
                         modules={course?.modules}
                     />
@@ -50,7 +53,9 @@ const Tabs = props => {
                     }}
                 />
             ) : (
-                <div dangerouslySetInnerHTML={{__html: course?.what_will_learn}}/>
+                <div 
+                style={{ color: "#f7f7f7" }}
+                dangerouslySetInnerHTML={{__html: course?.what_will_learn}}/>
             )}
             {loading ? (
                 <div

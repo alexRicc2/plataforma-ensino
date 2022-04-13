@@ -37,7 +37,9 @@ const ProfileBasicInfo = props => {
 
     if (!firstLoading) return <Skeleton/>
     return (
-        <div className="card">
+        <div className="card"
+        style={{ backgroundColor: "#212121", borderColor: "gray", color: "#f7f7f7"}}
+        >
             <div className="card-body row">
                 <div className="col-lg">
                     <div className="flex align-center fdcolumn fit-content">
@@ -64,13 +66,13 @@ const ProfileBasicInfo = props => {
                 </div>
                 <div className="col-lg-8 row">
                     <div className="col-sm">
-                        <span className="text-muted">Telefone</span>
+                        <span >Telefone</span>
                         <p className="text-primary">{phone || "(xx) xxxxx-xxxx"}</p>
-                        <span className="text-muted">E-mail</span>
+                        <span>E-mail</span>
                         <p className="text-primary">{email}</p>
                     </div>
                     <div className="col-sm">
-                        <span className="text-muted">Data de criação de conta</span>
+                        <span>Data de criação de conta</span>
                         <p className="text-primary">{new Date(Date.parse(createdAt)).toLocaleDateString("pt-BR")}</p>
                     </div>
                 </div>

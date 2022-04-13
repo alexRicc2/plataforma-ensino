@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import TopNavigation from "./TopNavigation";
 
 import styles from "./index.module.css";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logobranco.png";
 import LeftNavigation from "./LeftNavigation";
 import { useNavigate } from "react-router";
 
@@ -49,14 +49,14 @@ const Header = props => {
         <Box
             style={{
                 display: "flex",
-               
+                
             }}
         >
             <AppBar
                 position="fixed"
                 style={{
                     zIndex: 1500,
-                    
+                    backgroundColor: '#000'
                 }}
             >
                 <Toolbar>
@@ -76,7 +76,8 @@ const Header = props => {
                             backgroundSize: "cover",
                             backgroundImage: `url(${logo})`,
                             width: "2em",
-                            height: "2em"
+                            height: "2em",
+                            cursor: 'pointer'
                         }}
                         onClick={() => navigate("/")}
                     />

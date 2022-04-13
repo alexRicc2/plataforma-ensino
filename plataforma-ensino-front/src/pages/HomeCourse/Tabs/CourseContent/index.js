@@ -13,17 +13,16 @@ const CourseContent = props => {
 
     return (
         <div>
-            <Typography
-                variant="h5"
-                gutterBottom
+            <h5
+                style={{ color: "#f7f7f7", paddingBottom: '5px' }}
             >
                 Conteúdo do curso
-            </Typography>
-            <Typography
-                variant="body2"
+            </h5>
+            <p
+                style={{ color: "#f7f7f7", paddingBottom: '5px' }}
             >
                 {modules?.length} módulos • {modules?.reduce((result, module) => result + module?.lessons?.length, 0)} aulas
-            </Typography>
+            </p>
             {modules?.map(module => (
                 <CollapseContainer
                     key={module?.id}

@@ -31,7 +31,10 @@ const HomeCourse = () => {
     }, [data]);
     
     return (
-        <Box>
+        <Box
+        sx={{ backgroundColor: '#212121'}}
+
+        >
             {course?.cover_image && course?.cover_image != "null" && (
                 <div>
                     <Box
@@ -55,19 +58,18 @@ const HomeCourse = () => {
                     <br/>
                 </div>
             )}
-            <Typography
-                variant="h4"
-                align="center"
-                gutterBottom
+            <h4
+                style={{ color: '#f7f7f7', fontSize: '1.7rem', lineHeight: 1.5, textTransform: 'capitalize', paddingLeft: '10px' }}
             >
                 {course?.name}
-            </Typography>
+            </h4>
             <Box
                 display="flex"
                 flexDirection="row"
                 alignItems="stretch"
                 width="100%"
                 marginBottom="3em"
+                sx={{ paddingLeft: '10px', paddingRight: '10px' }}
             >
                 <Video
                     containerProps={{
@@ -85,22 +87,27 @@ const HomeCourse = () => {
                     padding={"0 3em"}
                     display="flex"
                     flexDirection="column"
+                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
                 >
                     <Box
                         flex={1}
                     >
-                        <Typography>
+                        <h5
+                        style={{ color: '#e1e1e1' }}>
                             {isLoading ? <Skeleton/> : course?.description}
-                        </Typography>
-                        <Typography
-                            variant="body2"
+                        </h5>
+                        <h5
+                            style={{ color: '#e1e1e1' }}
                         >
                             {isLoading ? (
                                 <Skeleton/>
-                            ) : 
+                            ) :
+                            course?.duration ? 
                                 <><OndemandVideoIcon/>&nbsp;{Secs2Minutes(course?.duration)} {course?.duration > 120 ? "minutos" : "minuto"} de conteúdo de vídeo</>
+                                :
+                                <><OndemandVideoIcon/> Curso sem tempo disponível</>
                             }
-                        </Typography>
+                        </h5>
                         <Evaluation/>
                     </Box>
                     <br/>

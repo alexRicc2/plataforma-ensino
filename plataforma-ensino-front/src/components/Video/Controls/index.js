@@ -134,7 +134,7 @@ const Controls = forwardRef((props, ref) => {
                         SetSlider(value);
                     }}
                     style={{
-                        color: theme.palette?.default?.error,
+                        color:"#f50057",
                         width: "98%"
                     }}
                     onMouseDown={() => SetPlaying(false)}

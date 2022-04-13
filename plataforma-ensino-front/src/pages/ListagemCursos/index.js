@@ -43,7 +43,7 @@ const ListagemCursos = () => {
 
 
   return (
-    <main style={{ minHeight: '80vh', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: "20px", backgroundColor: "lightblue" }}>
+    <main style={{ minHeight: '100vh', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: "20px", backgroundColor: "#212121", color: '#e1e1e1'}}>
       <h2>Usuário logado no front</h2>
       <br />
       <h3>Cursos listados aki</h3>
@@ -52,7 +52,12 @@ const ListagemCursos = () => {
           <Card
             onClick={()=> {navigate(`home/curso/${curso.id}`)}}
             key={index}
-            sx={{ width: "30%", margin: "1.5%" }}>
+            raised={true}
+            sx={{ 
+              width: "30%", 
+              margin: "1.5%", 
+              backgroundColor: "#2e2e2e",              
+             }}>
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -61,10 +66,10 @@ const ListagemCursos = () => {
                 alt="green iguana"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" sx={{ color: '#f7f7f7', fontWeight: 'bold' }}>
                   {curso.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2"  sx={{ color: '#e1e1e1' }}>
                   {curso.description}
                 </Typography>
               </CardContent>
