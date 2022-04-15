@@ -13,7 +13,7 @@ const Tabs = props => {
     const { course_id } = useParams();
     const queryClient = useQueryClient();
     
-    const loading = Boolean(queryClient.isFetching(["course", course_id]));
+    let loading = Boolean(queryClient.isFetching(["course", course_id]));
     const { course } = queryClient.getQueryData(["course", course_id]) || {};
 
     return (
@@ -25,15 +25,7 @@ const Tabs = props => {
                 { label: "Avaliações" }
             ]}
         >
-            {loading ? (
-                <Skeleton
-                    width="100%"
-                    height="15em"
-                    style={{
-                        transform: "scale(1)"
-                    }}
-                />
-            ) : (
+            
                 <div>
                     <div
                      style={{ color: "#f7f7f7" }}
@@ -43,7 +35,7 @@ const Tabs = props => {
                         modules={course?.modules}
                     />
                 </div>
-            )}
+            
             {loading ? (
                 <Skeleton
                     width="100%"

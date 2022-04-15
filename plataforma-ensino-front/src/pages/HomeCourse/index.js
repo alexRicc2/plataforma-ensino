@@ -7,7 +7,7 @@ import { Secs2Minutes } from "../../utils/transformations";
 import OndemandVideoIcon from '@material-ui/icons/OndemandVideo';
 import Video from "../../components/Video";
 import Tabs from "./Tabs";
-import { STORAGE_URL } from "../../variables";
+import { STORAGE_URL, AWS_URL } from "../../variables";
 import { Skeleton } from "@material-ui/lab";
 import { useQuery } from "react-query";
 import Evaluation from "./Evaluation";
@@ -77,7 +77,7 @@ const HomeCourse = () => {
                             flex: 1
                         }
                     }}
-                    src={course?.video_trailer ? STORAGE_URL + course?.video_trailer : null}
+                    src={course?.video_trailer ? AWS_URL + course?.video_trailer : null}
                    
                     title={'Trailer'}
                     boldTitle={course?.name}

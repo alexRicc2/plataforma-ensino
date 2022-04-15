@@ -9,7 +9,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useDispatch } from "react-redux";
-
+import { Skeleton } from "@mui/material";
+import {AWS_URL} from "../../variables";
 const ListagemCursos = () => {
 
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const ListagemCursos = () => {
     GetData();
   }, [search, page]);
 
+  // useEffect(() => window.location.reload())
 
   return (
     <main style={{ minHeight: '100vh', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: "20px", backgroundColor: "#212121", color: '#e1e1e1'}}>
@@ -48,7 +50,17 @@ const ListagemCursos = () => {
       <br />
       <h3>Cursos listados aki</h3>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {courses.map((curso, index) => (
+        {loading ?
+        (<>
+          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+        </>)
+        :
+        courses.map((curso, index) => (
           <Card
             onClick={()=> {navigate(`home/curso/${curso.id}`)}}
             key={index}
@@ -62,7 +74,7 @@ const ListagemCursos = () => {
               <CardMedia
                 component="img"
                 height="140"
-                image={STORAGE_URL + curso.image}
+                image={AWS_URL + curso.image}
                 alt="green iguana"
               />
               <CardContent>
@@ -75,7 +87,9 @@ const ListagemCursos = () => {
               </CardContent>
             </CardActionArea>
           </Card>
-        ))}
+        ))
+        }
+        
       </div>
 
 

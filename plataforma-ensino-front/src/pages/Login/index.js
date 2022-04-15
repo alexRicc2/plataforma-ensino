@@ -64,6 +64,7 @@ const Login = () => {
         }
 
         navigate(location?.state?.redirectTo ? location?.state?.redirectTo : "/");
+        window.location.reload()
     }
 
     

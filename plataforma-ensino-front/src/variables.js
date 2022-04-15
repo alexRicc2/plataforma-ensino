@@ -9,7 +9,7 @@ export const THIS_URL = "http://localhost:3000/"
 
 // export const URL = "https://api.itec.edu.br/"
 // export const THIS_URL = "https://api.itec.edu.br/"
-
+export const AWS_URL = "https://plataforma-ensino-laravel-images.s3.amazonaws.com/"
 export const API_URL = URL + "api/";
 export const STORAGE_URL = URL + "storage/";
 

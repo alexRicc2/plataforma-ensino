@@ -4,12 +4,14 @@ import React, { Component, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { logout } from './actions/AppActions';
 import { connect, useDispatch, useSelector } from 'react-redux';
-
+import ListItemIcon from '@mui/material/ListItemIcon';
 // users
 import { FaUserAlt } from 'react-icons/fa';
 import { URL } from './variables';
 import { Avatar, Divider, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
-
+import { FiLogOut} from 'react-icons/fi';
+import { BiLogInCircle } from 'react-icons/bi'
+import {AiOutlineUsergroupAdd} from 'react-icons/ai'
 
 const ProfileMenu = (props) => {
     const dispatch = useDispatch();
@@ -37,6 +39,7 @@ const ProfileMenu = (props) => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         dispatch(logout());
+        window.location.reload()
     }, []);
 
     // return (
@@ -77,22 +80,67 @@ const ProfileMenu = (props) => {
                 style={{
                     zIndex: 2000
                 }}
+                // PaperProps={{
+                //     style: {
+                //         minWidth: "10em"
+                //     }
+                // }}
                 PaperProps={{
-                    style: {
-                        minWidth: "10em"
-                    }
+                    elevation: 0,
+                    sx: {
+                        backgroundColor: '#000 !important',
+                        color: '#f7f7f7 !important',
+                        overflow: 'visible',
+                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                        mt: 1.5,
+                        '& .MuiAvatar-root': {
+                            width: 32,
+                            height: 32,
+                            ml: -0.5,
+                            mr: 1,
+                        },
+                        '&:before': {
+                            content: '""',
+                            display: 'block',
+                            position: 'absolute',
+                            top: 0,
+                            right: 12,
+                            width: 10,
+                            height: 10,
+                            bgcolor: '#000',
+                            transform: 'translateY(-50%) rotate(45deg)',
+                            zIndex: 0,
+                        },
+                    },
                 }}
             >
                 {(user && Object.keys(user)?.length != 0) ? (<div>
-                <MenuItem onClick={() => navigate(`/profile/view/${user?.id}`)}><Avatar style={{ width: 32, height: 32 }}/> Perfil</MenuItem>
-                <Divider/>
-                <MenuItem onClick={logout_}>Sair</MenuItem>
+                    <MenuItem onClick={() => navigate(`/profile/view/${user?.id}`)}><Avatar style={{ width: 32, height: 32 }} /> Perfil</MenuItem>
+                    <Divider />
+                    <MenuItem onClick={logout_}>
+                        <ListItemIcon>
+                            <FiLogOut fontSize="1.5em" color={"#f7f7f7"}/>
+                        </ListItemIcon>
+                        Sair
+
+                    </MenuItem>
                 </div>) :
-                (<div>
-                    <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
-                    <Divider/>
-                    <MenuItem onClick={() => navigate("/register")}>Criar conta</MenuItem>
-                </div>)}
+                    (<div>
+                        <MenuItem onClick={() => navigate("/login")}>
+                        <ListItemIcon>
+                            <BiLogInCircle fontSize="1.5em" color={"#f7f7f7"}/>
+                        </ListItemIcon>
+                            Login    
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={() => navigate("/register")}>
+                        <ListItemIcon>
+                            <AiOutlineUsergroupAdd fontSize="1.5em" color={"#f7f7f7"}/>
+                        </ListItemIcon>
+
+                            Criar conta    
+                        </MenuItem>
+                    </div>)}
             </Menu>
         </>
     )
