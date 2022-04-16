@@ -15,6 +15,7 @@ use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class CourseMainController extends Controller {
     
@@ -128,11 +129,11 @@ class CourseMainController extends Controller {
     public function Create(CourseMainRequest $request) {
         Log::info($request);
         $data = $request->validated();
-        
         if ($image = $request->file("image")) {
             $filename = uniqid("course_thumb_") . "." . $image->extension();
-            $path = $image->storeAs("courses_thumbnails", $filename, ["disk" => "public"]);
+            $path = $image->storeAs("courses_thumbnails", $filename, ["disk" => "s3"]);
             $data["image"] = $path;
+            
         }
 
         if ($image = $request->file("cover_image")) {
@@ -143,7 +144,7 @@ class CourseMainController extends Controller {
 
         if ($image = $request->file("video_trailer")) {
             $filename = uniqid("course_trailer") . "." . $image->extension();
-            $path = $image->storeAs("courses_videos_trailers", $filename, ["disk" => "public"]);
+            $path = $image->storeAs("courses_videos_trailers", $filename, ["disk" => "s3"]);
             $data["video_trailer"] = $path;
         }
 

@@ -13,6 +13,7 @@
         "laravel/passport": "^10.1",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "php-ffmpeg/php-ffmpeg": "^0.18.0",
         "smalot/pdfparser": "^2.0"
     },
