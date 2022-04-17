@@ -11,6 +11,8 @@ import { CardActionArea } from '@mui/material';
 import { useDispatch } from "react-redux";
 import { Skeleton } from "@mui/material";
 import {AWS_URL} from "../../variables";
+import styles from './style.module.scss';
+import Footer from "../../Home/Footer";
 const ListagemCursos = () => {
 
   const dispatch = useDispatch();
@@ -45,19 +47,22 @@ const ListagemCursos = () => {
   // useEffect(() => window.location.reload())
 
   return (
-    <main style={{ minHeight: '100vh', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: "20px", backgroundColor: "#212121", color: '#e1e1e1'}}>
+    <main className={styles.main}>
       <h2>Usuário logado no front</h2>
       <br />
       <h3>Cursos listados aki</h3>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div 
+      //style={{ display: "flex", flexWrap: "wrap" }}
+      className={styles.container}
+      >
         {loading ?
         (<>
-          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
-          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
-          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
-          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
-          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
-          <Skeleton variant="rectangular" width="30%" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
+          <Skeleton variant="rectangular" height={240} sx={{margin: "1.5%", bgcolor: 'grey.800'}}/>
         </>)
         :
         courses.map((curso, index) => (
@@ -66,8 +71,8 @@ const ListagemCursos = () => {
             key={index}
             raised={true}
             sx={{ 
-              width: "30%", 
-              margin: "1.5%", 
+              // width: "30%", 
+              // margin: "1.5%", 
               backgroundColor: "#2e2e2e",              
              }}>
             <CardActionArea>
@@ -91,7 +96,7 @@ const ListagemCursos = () => {
         }
         
       </div>
-
+        <Footer/>
 
     </main>
   )

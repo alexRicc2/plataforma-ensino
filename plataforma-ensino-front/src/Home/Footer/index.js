@@ -12,13 +12,13 @@ const Footer = () => {
             
         >
             {/* <NoAuth/> */}
-            <div className="contact-data text-center">
-                <h6 className="font-weight-bold">Entre em contato</h6>
+            <div >
+                <h6>Entre em contato</h6>
                
             </div>
-            <div id="copyright" className="w100 flex jcc text-center fdcolumn">
+            <div >
                
-                <span className="text-muted">
+                <span >
                     Direitos reservados Alex<br/>
                    
                 </span>

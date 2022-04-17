@@ -71,7 +71,7 @@ const Login = () => {
     return (
         <Box
             className="login-wrapper"
-            bgcolor={"orange"}
+            bgcolor={"#212121"}
             style={theme?.login?.background}
             // style={{
                 //     ...(pageStyle && pageStyle["background_color"] && {backgroundColor: pageStyle["background_color"]}),
