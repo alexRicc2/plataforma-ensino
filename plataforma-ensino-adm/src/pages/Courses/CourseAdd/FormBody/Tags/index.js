@@ -70,7 +70,7 @@ const Tags = props => {
                         <Input
                             {...params.inputProps}
                             placeholder="Procurar por tags"
-                            autoFocus
+                            
                             value={search}
                             onChange={(e) => SetSearch(e.target.value)}
                         />

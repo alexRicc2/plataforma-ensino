@@ -73,7 +73,6 @@ const Category = props => {
                         <Input
                             {...params.inputProps}
                             placeholder="Procurar por categorias"
-                            autoFocus
                             value={search}
                             onChange={(e) => SetSearch(e.target.value)}
                         />

@@ -1,0 +1,36 @@
+.playingOverlay {
+    width: 1em;
+    height: 1em;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: 1s;
+    opacity: 0;
+}
+
+.fire {
+    animation: grow .5s ease-in-out;
+}
+
+@keyframes grow {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .8;
+        width: 5em;
+        height: 5em;
+    }
+    100% {
+        opacity: 0;
+        width: 5em;
+        height: 5em;
+    }
+}

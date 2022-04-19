@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Show } from "../../../../../actions/SnackbarActions";
 import { Post } from "../../../../../utils/request";
 import FormBody from "./FormBody";
@@ -10,7 +10,7 @@ const LessonEdit = () => {
     const [loading, SetLoading] = useState(false);
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const { module_id, course_id, lesson_id } = useParams();
 
@@ -38,7 +38,7 @@ const LessonEdit = () => {
             message: response?.message,
             severity: response?.severity
         }));
-        history.push(`/modules/${module_id}/${course_id}`);
+        navigate(`/modulos/${module_id}/${course_id}`);
     }
 
     return (

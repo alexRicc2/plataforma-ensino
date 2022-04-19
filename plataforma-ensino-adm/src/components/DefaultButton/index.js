@@ -66,6 +66,7 @@ const DefaultButton = ({
                         borderTopRightRadius: bordersRadius[1] ? "4px" : "initial",
                         borderBottomRightRadius: bordersRadius[2] ? "4px" : "initial",
                         borderBottomLeftRadius: bordersRadius[3] ? "4px" : "initial",
+                        
                     }, style)}
                     type={type}
                     onClick={(e) => {
@@ -87,6 +88,7 @@ const DefaultButton = ({
                         style={{
                             width: "15px",
                             height: "15px",
+                            marginRight: "4px",
                             color: color
                         }}
                     />

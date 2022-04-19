@@ -21,6 +21,7 @@ const CourseEdit = () => {
     const { id } = useParams();
 
     const Submit = async (data) => {
+        console.log("chamou submit" , data)
         if (!data?.image) {
             SetPopup(true);
             SetPopupMessage("Insira uma imagem!");
@@ -46,9 +47,17 @@ const CourseEdit = () => {
         let form = new FormData();
         form.append("id", id);
         form.append("image", data.image);
+        form.append("cover_image", data.coverImage);
         form.append("name", data.name);
         form.append("description", data.description);
         form.append("created_by", userId);
+        form.append("price", data?.price);
+        form.append("free", data?.free);
+       
+        form.append("course_content", data?.courseContent);
+        form.append("what_will_learn", data?.whatWillLearn);
+        form.append("video_trailer", data?.videoTrailer);
+        
         for (let i = 0; i < data.responsibles.length; i++) form.append("responsible_id[]", data.responsibles[i]?.id);
         for (let i = 0; i < data.categories.length; i++) form.append("category_id[]", data.categories[i]?.id);
         for (let i = 0; i < data.tags.length; i++) form.append("tag_id[]", data.tags[i]?.id);

@@ -72,7 +72,6 @@ const Responsibles = props => {
                         <Input
                             {...params.inputProps}
                             placeholder="Procurar por usuários"
-                            autoFocus
                             value={search}
                             onChange={(e) => SetSearch(e.target.value)}
                         />

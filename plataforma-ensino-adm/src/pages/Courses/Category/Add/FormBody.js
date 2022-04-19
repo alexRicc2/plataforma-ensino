@@ -41,7 +41,9 @@ const FormBody = props => {
                         };
                         OnConfirm(data);
                     }}
+                    loadingtext={"criando"}
                     loading={loading}
+                
                 />
             </div>
         </div>

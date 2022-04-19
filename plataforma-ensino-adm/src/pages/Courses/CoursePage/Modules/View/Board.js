@@ -65,7 +65,7 @@ const Board = props => {
                     Tem certeza que deseja deletar essa aula?
                 </SweetAlert>
                 <DefaultButton
-                    to={`/modules/${module_id}/${course_id}/lesson/${lesson_id}/edit`}
+                    to={`/modulos/${module_id}/${course_id}/lesson/${lesson_id}/editar`}
                     width="2.2em"
                     height="2.2em"
                     padding={0}

@@ -19,6 +19,9 @@ const CourseAdd = () => {
     const navigate = useNavigate();
 
     const Submit = async (data) => {
+       
+        console.log('video',  data.videoTrailer);
+       
         if (!data?.image) {
             SetPopup(true);
             SetPopupMessage("Insira uma imagem");
@@ -45,7 +48,16 @@ const CourseAdd = () => {
         form.append("name", data.name);
         form.append("description", data.description);
         form.append("image", data.image);
+        form.append("cover_image", data.coverImage);
         form.append("created_by", userId);
+        form.append("price", data?.price);
+        form.append("free", data?.free);
+        form.append("course_content", data?.courseContent);
+        form.append("what_will_learn", data?.whatWillLearn);
+        form.append("video_trailer", data?.videoTrailer[0]);
+
+        console.log('formulario', form)
+
         for (let i = 0; i < data.responsibles.length; i++) form.append("responsible_id[]", data.responsibles[i]?.id);
         for (let i = 0; i < data.categories.length; i++) form.append("category_id[]", data.categories[i]?.id);
         for (let i = 0; i < data.tags.length; i++) form.append("tag_id[]", data.tags[i]?.id);
@@ -59,7 +71,7 @@ const CourseAdd = () => {
             message: response?.message,
             severity: response?.severity,
             buttonActionText: "Ver",
-            ButtonAction: () => navigate(`/cursos/view/${response?.courseId}`)
+            ButtonAction: () => navigate(`/cursos/ver/${response?.courseId}`)
         }));
 
         if (response?.status === true) navigate("/cursos/lista");
@@ -78,7 +90,7 @@ const CourseAdd = () => {
             </SweetAlert>
             <div className="card-body">
                 <h2 className="title">Criar curso</h2>
-                <p>Aqui são criados os cursos do sistema</p>
+                <p>Aqui sãooooo criados os cursos do sistema</p>
                 <br/>
                 <FormBody
                     OnConfirm={data => Submit(data)}

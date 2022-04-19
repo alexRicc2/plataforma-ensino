@@ -46,7 +46,7 @@ const VideoInput = props => {
 
     useEffect(() => {
         VideoChange && VideoChange(videos);
-
+        console.log('videos', videos)
         let temp_size = 0;
         for (let i = 0; i < videos.length; i++) {
             temp_size += videos[i].size;

@@ -23,6 +23,10 @@ import ModuleAdd from "./pages/Courses/CoursePage/Modules/Add";
 import ModuleEdit from "./pages/Courses/CoursePage/Modules/Edit";
 import ModuleView from "./pages/Courses/CoursePage/Modules/View";
 import LessonAdd from "./pages/Courses/CoursePage/CourseLessons/LessonAdd";
+import LessonEdit from "./pages/Courses/CoursePage/CourseLessons/LessonEdit";
+import LessonView from "./pages/Courses/CoursePage/CourseLessons/LessonView";
+import Dashboard from "./pages/Dashboard";
+
 const RoutesContainer = () => {
 
     const token = useSelector(state => state.AppReducer.token);
@@ -37,6 +41,7 @@ const RoutesContainer = () => {
                     )
                     
                 }>
+                    <Route path={`/`} element={<Dashboard/>}/>
                     <Route path={`profile/view/:user_id`} element={<Profile/>}/>
                     <Route path={`cursos/lista`} element={<CourseList/>}/>
                     <Route path={`cursos/adiciona`} element={<CourseAdd/>}/>
@@ -52,6 +57,8 @@ const RoutesContainer = () => {
                     <Route path={`modulos/editar/:module_id/:course_id`} element={<ModuleEdit/>}/>
                     <Route path={`modulos/:module_id/:course_id`} element={<ModuleView/>}/>
                     <Route path={`modulos/:module_id/:course_id/lesson/adiciona`} element={<LessonAdd/>}/>
+                    <Route path={`modulos/:module_id/:course_id/lesson/:lesson_id/editar`} element={<LessonEdit/>}/>
+                    <Route path={`modulos/:module_id/:course_id/lesson/:lesson_id/ver`} element={<LessonView/>}/>
                 </Route>
                 <Route path="/login" element={<Login/>} />
                 <Route path="/register" element={<Register/>} />

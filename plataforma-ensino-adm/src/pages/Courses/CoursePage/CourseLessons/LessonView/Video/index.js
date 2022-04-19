@@ -1,9 +1,9 @@
 import { Box } from "@material-ui/core";
-import Video from "components/Video";
+import Video from "../../../../../../components/Video";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Get } from "utils/request";
-import { STORAGE_URL } from "variables";
+import { Get } from "../../../../../../utils/request";
+import { STORAGE_URL } from "../../../../../../variables";
 
 const VideoContainer = () => {
 

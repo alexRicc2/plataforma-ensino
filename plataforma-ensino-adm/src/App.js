@@ -4,6 +4,7 @@ import RoutesContainer from './routes';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box, createTheme, CssBaseline, LinearProgress, Typography, Zoom } from '@material-ui/core';
+import DynamicSnackbar from './DynamicSnackbar';
 function App() {
 
   const [loading, SetLoading] = useState(true);
@@ -59,7 +60,10 @@ if (loading) return (
 );
 
   return (
-   <RoutesContainer/>
+      <>
+        <RoutesContainer/>
+        <DynamicSnackbar/>
+      </>
   );
 }
 

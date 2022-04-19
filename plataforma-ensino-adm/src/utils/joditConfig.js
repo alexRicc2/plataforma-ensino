@@ -1,4 +1,4 @@
-import { API_URL, STORAGE_URL } from "variables";
+import { API_URL, STORAGE_URL } from "../variables";
 
 let jodit = undefined;
 

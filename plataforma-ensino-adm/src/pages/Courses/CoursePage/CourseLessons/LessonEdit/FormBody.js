@@ -6,12 +6,11 @@ import { Get } from "../../../../../utils/request";
 import DefaultButton from "../../../../../components/DefaultButton";
 import FileInput from "../../../../../components/Inputs/FileInput";
 import VideoInput from "../../../../../components/Inputs/VideoInput";
-import FormMaker from "components/FormMaker";
+import FormMaker from "../../../../../components/FormMaker";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Fab, FormControlLabel, IconButton, Switch, TextField, Typography } from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
-import { Percentage } from "utils/filters";
-import CollapseContainer from "components/CollapseContainer";
+import CollapseContainer from "../../../../../components/CollapseContainer";
 
 const FormBody = props => {
 
@@ -193,7 +192,7 @@ const FormBody = props => {
                     bg="secondary"
                     text="Voltar"
                     icon={<RiArrowGoBackLine />}
-                    to={`/modules/${module_id}/${course_id}`}
+                    to={`/modulos/${module_id}/${course_id}`}
                 />
                 <DefaultButton
                     bg="confirm"

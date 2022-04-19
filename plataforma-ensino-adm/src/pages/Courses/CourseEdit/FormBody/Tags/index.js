@@ -11,7 +11,7 @@ const Tags = props => {
         prevTags,
         onChange
     } = props;
-    console.log(prevTags);
+    
     const [Tags, SetTags] = useState([]);
     const [toAddTags, SetToAddTags] = useState(prevTags);
     const [search, SetSearch] = useState("");
@@ -71,7 +71,6 @@ const Tags = props => {
                         <Input
                             {...params.inputProps}
                             placeholder="Procurar por tags"
-                            autoFocus
                             value={search}
                             onChange={(e) => SetSearch(e.target.value)}
                         />
